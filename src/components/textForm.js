@@ -25,7 +25,6 @@ export default function TextForm(props) {
     const rmExtraSpaces = () => {
         let word = text.split(' ');
         let filteredWord = word.filter(eleme => eleme !== '');
-        console.log(filteredWord);
         let newText = filteredWord.join(' ');
         setText(newText.toString());
         props.showAlert('Extra spaces have been removed', 'success')
@@ -58,8 +57,8 @@ export default function TextForm(props) {
             </div>
             <div>
                 <h2 className='my-3'>Analysis of the Text</h2>
-                <span>Words - {text.split(" ").filter(elem=>elem!=='').length} and Characters - {text.length}</span>
-                <p>{((text.split(" ").filter(elem=>elem!=='').length)===0?'0':(text.split(" ").filter(elem=>elem!=='').length/240).toFixed(3))} Minutes read</p>
+                <span>Words - {text.split(/\s+/).filter(elem=>elem!=='').length} and Characters - {text.length}</span>
+                <p>{((text.split(' ').filter(elem=>elem!==''||elem==='\n').length)===0?'0':(text.split(" ").filter(elem=>elem!=='').length/240).toFixed(3))} Minutes read</p>
                 <h3>Preview</h3>
                 <p>{text}</p>
             </div>
